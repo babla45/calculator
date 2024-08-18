@@ -1,8 +1,8 @@
 body{
     display: flex;
     align-items: center;
+    min-height: 500px;
     justify-content: center;
-    min-height: 460px;
     background-color:#000000;
 }
 
@@ -88,3 +88,11 @@ body{
     margin: 1px;
 }
 
+@media only screen and (max-width: 480px){
+    body{
+        transform: scale(1.29);
+        
+        height: 100vh;
+        width: 100vw;
+    }
+}
