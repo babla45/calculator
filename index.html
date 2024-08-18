@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+    <div class="container">
+        <div class="calculator">
+                <div class="display">
+                    <div id="display2"><p>Md Babla Islam</p></div>
+                    <input type="text" name="display" id="display" value="0">
+                </div>
+                
+                <div class="buttons">
+                    <div>
+                        <input class="ib" type="button" value="ac" onclick="strAppend('AC')">
+                        <input class="ib" type="button" value="del" onclick="strAppend('DL')">
+                        <input class="ib" type="button" value="(" onclick="strAppend('(')">
+                        <input class="ib" type="button" value=")" onclick="strAppend(')')">
+                    </div>
+                    
+                    <div>
+                        <input class="ib" type="button" value="7" onclick="strAppend('7')">
+                        <input class="ib" type="button" value="8" onclick="strAppend('8')">
+                        <input class="ib" type="button" value="9" onclick="strAppend('9')">
+                        <input class="ib" type="button" value="×" onclick="strAppend('*')">
+                    </div>
+                    <div>
+                        <input class="ib" type="button" value="4" onclick="strAppend('4')">
+                        <input class="ib" type="button" value="5" onclick="strAppend('5')">
+                        <input class="ib" type="button" value="6" onclick="strAppend('6')">
+                        <input class="ib" type="button" value="/" onclick="strAppend('/')">
+                    </div>
+                    <div>
+                        <input class="ib" type="button" value="1" onclick="strAppend('1')">
+                        <input class="ib" type="button" value="2" onclick="strAppend('2')">
+                        <input class="ib" type="button" value="3" onclick="strAppend('3')">
+                        <input class="ib" type="button" value="-" onclick="strAppend('-')">
+                    </div>
+                    <div>
+                        <input class="ib" type="button" value="." onclick="strAppend('.')">
+                        <input class="ib" type="button" value="0" onclick="strAppend('0')">
+                        <input class="ib" type="button" value="%" onclick="strAppend('%')">
+                        <input class="ib" type="button" value="+" onclick="strAppend('+')">
+                    </div>
+                    <div>
+                        <input class="ib" type="button" value="E" onclick="strAppend('E')">
+                        <input class="ib" type="button" value="π" onclick="strAppend('π')">
+                        <input class="ib" type="button" value="√" onclick="strAppend('√(')">
+                        <input class="ib" type="button" value="=" onclick="Evaluate()">
+                    </div>
+    
+                </div>
+        </div>
+    </div>
+
+
+    <script>
+        function strAppend(val)
+        {
+            var display=document.getElementById("display");
+
+            if(val=='AC')    display.value='0';
+            else if(val=='DL')
+            {
+                var val2=display.value.toString();
+                if(val2.length<=1)  display.value='0';
+                else   display.value=val2.slice(0,-1);
+            }
+            else if(display.value=='0' || display.value=='error') display.value=val;
+            else   display.value += val;
+        }
+
+
+
+        function Evaluate() {
+            var display = document.getElementById("display");
+        
+        
+            try {
+
+                var evaluated = display.value.replace('π','Math.PI');
+                evaluated=evaluated.replace('√','Math.sqrt');
+
+                display.value = eval(evaluated);
+        
+            } catch {
+        
+                display.value = 'Syntax Error';
+            }
+        }
+        
+    </script>
+
+
+</body>
+</html>
